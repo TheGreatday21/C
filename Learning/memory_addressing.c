@@ -11,12 +11,13 @@ int main (void)
     //Pointer can also have variable(pointer variables )
     int age = 23;
     //the pointer variable ought to have the same data type as the variable its storing memory address of 
-    int * pAge = &age;
+    int * pAge ;
+    pAge = &age; //the & is aso known as the address of operator 
     //all pointer variables have to start with * p followed by the variable name here with first letter capital for easy referencing 
     
     printf("Value of age : %d\n",age);
     printf("Value of pAge : %d\n", *pAge);
-    // *pAge is referred to as dereferencing a pointer 
+    // adding a * to a pointer  is referred to as dereferencing a pointer 
 
     printf("memory address of age : %p\n",&age);
     printf("memory address of age in pAge: %p\n",pAge);
@@ -27,19 +28,19 @@ int main (void)
 //3. They can be used in searching and sorting very large data 
 //4. They can return more than one value from a function 
 
-   // A string is actually  a pointer pointing to the first chcaracter of an array of characters 
-    char * name = "Elijah";
+   // A string is actually  a pointer pointing to the first character of an array of characters 
+    char* name = "Elijah";
     printf("This is a string : %s\n",name);
     printf("This is the address of the first character of the array : %p\n",name);
     //these two addresses are the same thats why 
     printf("This is the address of the first character of the array : %p\n",&name[0]);
-    printf("This is the address of the first character of the array : %p\n",&name[1]);
+    printf("This is the address of the second character of the array : %p\n",&name[1]);
 */
     //......................You cant directly assign strings to themselves because of addressing ..............
 
     char s[4] ;
     printf("s: ");
-    fgets(s,10,stdin);
+    fgets(s,4,stdin);
  /*   
     char* t = s;
     t[0] = toupper(t[0]);
