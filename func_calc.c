@@ -32,21 +32,21 @@ int main(void)
         //getchar();//grab the extra line left by scanf above 
         scanf("%c",&operator);
 
-        switch (operator)
+        switch (operator)//Is a type of if statement that checks what is in a variable with cases 
         {
             case '+':
                 result = add(num1, num2);
-                printf("\n\nResult: %.2lf\n\n\n", result);
+                printf("\n\nResult: %.2f\n\n\n", result);
                 break;
             case '*':
                 result = multiply(num1, num2);
-                printf("\n\nResult: %.2lf\n\n\n", result);
+                printf("\n\nResult: %.2f\n\n\n", result);
                 break;
             case '/':
                 if (num2 != 0)
                 {
                     result = divide(num1, num2);
-                    printf("\n\nResult: %.2lf\n\n\n", result);
+                    printf("\n\nResult: %.2f\n\n\n", result);
                 }
                 else
                 {
@@ -55,7 +55,7 @@ int main(void)
                 break;
             case '-':
                 result = subtract(num1, num2);
-                printf("\n\nResult: %.2lf\n\n\n", result);
+                printf("\n\nResult: %.2f\n\n\n", result);
                 break;
             default:
                 printf("\n\nInvalid operator\n\n\n");
