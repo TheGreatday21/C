@@ -1,5 +1,11 @@
 {
     "cSpell.words": [
         "sooo"
-    ]
+    ],
+    "files.associations": {
+        "*.sqlbook": "sql",
+        "*.ndjson": "jsonl",
+        "*.dbclient-js": "javascript",
+        "stdlib.h": "c"
+    }
 }

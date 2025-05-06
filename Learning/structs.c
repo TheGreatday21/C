@@ -15,7 +15,7 @@ struct Students //they always start with a capital letter
 int main(void)
 {
 
-    struct Students student1;//creating a containter thats going to contain all this data of different data types 
+    struct Students student1;//creating a container thats going to contain all this data of different data types 
     //they are similar to arrays but they can store different dts together 
     student1.age = 24;
     student1.gpa = 4.6;
