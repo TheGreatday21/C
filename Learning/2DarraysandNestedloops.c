@@ -29,6 +29,24 @@ int main ()
         printf("\n");
     
     }
+
+    //An array of strings is a 2d array 
+
+
+
+    char names[][10] = {
+                        "Elijah",
+                        "james",
+                        "Joshua",
+                        "Esther"
+                    };
+    //we create a variable to hold the number of elements in the array
+    int n = sizeof(names)/sizeof(names[0]);
+    //we use a loop to iterate through the array 
+    for (int i = 0; i < sizeof(names)/sizeof(names[0]); i++ )
+    {
+        printf("Hello %s \n",names[i]);
+    }
 }
 
 
