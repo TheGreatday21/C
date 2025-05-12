@@ -36,7 +36,7 @@ int main ()
 
     char names[][10] = {
                         "Elijah",
-                        "james",
+                        "James",
                         "Joshua",
                         "Esther"
                     };

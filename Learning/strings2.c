@@ -18,10 +18,20 @@ int main (void)
     printf("What is your name :\n");
     fgets(Name,25,stdin);
     Name[strlen(Name) - 1] = 0;
+
     int number = strlen(Name);
 
     printf("%s is %d characters long  \n",Name,number);
 
+    //An array of strings 
+
+    char names[][15] = {"Elijah","Kaizzi","Lover","James","Shaila"};
+    //use a loop to iterate through the array . Create a variable to get the size of the  array 
+    int n = sizeof(names)/ sizeof(names[0]);
+    for(int i =0; i < n; i++)
+    {
+        printf("Hello: %s \n",names[i]);
+    }
 
 }
 

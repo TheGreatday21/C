@@ -1,16 +1,15 @@
 #include <ctype.h>
-//#include <cs50.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 
 
-int main (int argc,  char argv[])//void used to mean the program takes no arguments but now it takes arguments 
-//char argv - the array (all the  words you type at the prompt)
+int main (int argc,  char* argv[])//void used to mean the program takes no arguments but now it takes arguments 
+//char* argv - the array (all the  words you type at the prompt)
 //int argc  - the length of the array of strings (the collection of words the human typed in )
 {
-    printf("Hello %s \n ", argv[1]);
+    //printf("Hello %s \n ", argv[1]);
 
     if (argc == 2)
     {

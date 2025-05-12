@@ -15,8 +15,8 @@ int main(void)
 
         printf("Hello, What might your lovely name be: \n");
         fgets(name,25,stdin);
-        name [strcspn(name,"\n")] = 0;
-      
+        //name [strcspn(name,"\n")] = 0;
+        name[strlen(name) - 1] = '\0';
         printf("\nWelcome to calculiner %s \n\n", name);
 
     while(1)

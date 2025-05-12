@@ -13,11 +13,17 @@ int main (void)
     int * pAge = &age;
     //all pointer variables have to start with * p followed by the variable name here with first letter capital for easy referencing 
     
+    printf("Value of age : %d\n",age);
+    printf("Value of pAge : %d\n", *pAge);//*pAge is referred to as dereferencing a pointer 
 
-    //printf("this is the variable age's value memory address : %p\n", &age);
-    printf("%p",pAge);
-
-
+    printf("memory address of age : %p\n",&age);
+    printf("memory address of age in pAge: %p\n",pAge);
+    
+//pointers are used because they have general advantages which include:
+//1. They are faster to run compared to actual variables 
+//2. They are dynamically assigned in memory 
+//3. They can be used in searching and sorting very large data 
+//4. They can return more than one value from a function 
 
 
 

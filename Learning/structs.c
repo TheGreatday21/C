@@ -24,7 +24,7 @@ int main(void)
     strcpy(student1.gmail, "kaizzielijah@gmail.com");
 
 
-    struct Students student2;//creating a containter thats going to contain all this data of different data types 
+    struct Students student2;//creating a container thats going to contain all this data of different data types 
     //they are similar to arrays but they can store different dts together 
     student2.age = 24;
     student2.gpa = 4.2;

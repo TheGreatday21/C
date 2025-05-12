@@ -9,7 +9,8 @@ int main (void)
     char name[10];
     printf("Before :");
     fgets(name, 10, stdin);
-    name[strlen(name) - 1] = 0;
+    //name [strcspn(name,"\n")] = 0;
+    name[strlen(name) - 1] = '\0';
     printf("\nAfter :");
     /*
     //USING ASCII TABLE -32 FOR UPPERCASE 
@@ -25,7 +26,7 @@ int main (void)
     }
     printf("\n");
     */
-    //USING A NEW LIBRARY ctype.h HAS INBUILT FUNCTIONS LIKE toupper
+    //USING A NEW LIBRARY ctype.h has inbuilt functions like  toupper(changes to upper case automatically and ignore already uppercase letters )
     for (int i = 0, n = strlen(name); i < n; i++)
     {
         printf("%c",toupper(name[i]));//if a character is already upper it just leaves it unchanged  

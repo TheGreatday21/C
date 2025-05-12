@@ -1,5 +1,5 @@
 //today we will be learning how to use functions in c
-//The  main close is also  a function in c
+//The  main function  is also  a function in c
 
 
 #include <stdio.h>
