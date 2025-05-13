@@ -6,12 +6,13 @@ Write a program to build a simple Software for Student Information Management Sy
     Store the Last name of the student.
     Store the unique student number for every student.
     Store the CGPA of every student.
-    Store the courses registered by the student.
+    Store the course registered by the student.
 */
 
 #include <stdio.h>
 #include <stdlib.h>//allows us to use the exit code status like exit(0) like return 0 for success 
 #include <string.h>
+#include <unistd.h>
 
 int how_many = 0;//variable to hold the number of students. First initialise it to 0
 
@@ -24,12 +25,13 @@ struct SIMS
     int cid;//course id
 }students[55];//this struct can store 55 students 
 
-void courses(int cid);//prototyping my function for main to see 
+void courses(int cid);//prototyping my functions for main to see 
 void add_student();
-void find_student_num();//has exit codes after printing the searched student information 
+void find_student_num();
 void find_student_fname();
 void update_student();
 void delete_student();
+void total_students();
 
 int main(void)//placed main in an infinite loop so that the global variable how_many does not reset 
 {
@@ -64,10 +66,12 @@ int main(void)//placed main in an infinite loop so that the global variable how_
         case 5:
             delete_student();
             break;
+        case 6:
+            total_students();
+            break;
         case 7:
             exit(0);
-        default:
-            break;
+        
         }
     }
   
@@ -99,7 +103,7 @@ void add_student()
 {
     getchar();
 
-    printf("\t\t\t\t\t\t\n..................Enter the student details here ................\n\n");
+    printf("\t\t\t\t\t\t\n..................Enter the student details here ................\n");
 
     printf("First name: ");
     fgets(students[how_many].fname, sizeof(students[how_many].fname), stdin);
@@ -160,7 +164,6 @@ void find_student_num()
     if (!found)//if not true (since found = 0 )
     {
         printf("User student number invalid.\n");
-        exit(1); //exit with error status
     }
 
     printf("\n\nPress\n 1 : main menu\n 0 : exit");
@@ -173,8 +176,6 @@ void find_student_num()
     {
         exit(0);
     }
-
-   
 }
 //creating a function to find a student using their first name 
 void find_student_fname()
@@ -198,7 +199,7 @@ void find_student_fname()
             printf("Student last name  : %s \n",students[i].lname);
             printf("Student number     : %d \n",students[i].s_num);
             printf("Student  cgpa      : %f \n",students[i].cgpa);
-            printf("            Course : ");
+            printf("Course             : ");
             courses(students[i].cid);
             printf("\n");
 
@@ -210,10 +211,9 @@ void find_student_fname()
     if(!found)
     {
         printf("Student not available \n");
-        exit(1);
     }
 
-    printf("\n\nPress\n 1 : main menu\n 0 : exit\n");
+    printf("\n\nPress\n 1 : main menu\n 0 : exit");
     scanf("%d",&main_menu);
     if (main_menu == 1)
     {
@@ -224,12 +224,12 @@ void find_student_fname()
         exit(0);
     }
 
-
 }
 //create a function to update an already existing student 
 void update_student()
 {
     getchar(); //removing the new line 
+
     int user_input,update;//creating integer variables to hold user input and update number for que 
     int main_menu;
     printf("Enter student number : ");
@@ -240,8 +240,8 @@ void update_student()
         if(students[i].s_num == user_input)
         {
             getchar();
-            printf("Select number to update details \n");
-            printf(" 1. First name\n 2. Last name\n 3. CGPA\n 4. course id \n");
+            printf("\nSelect number to update details \n");
+            printf(" 1. First name\n 2. Last name\n 3. CGPA\n 4. course id \n\t\t\t\t");
             scanf("%d",&update);
 
             switch (update)
@@ -267,7 +267,7 @@ void update_student()
                 break;
             }
 
-            printf("Details updated successfully \n");
+            printf("\n\t\t\t\t.....................Details updated successfully.................... \n");
             
         }
     }
@@ -324,11 +324,44 @@ void delete_student()
 
 
 }
+//create a function to get the total number of students and just show 3 of their details 
+void total_students()
+{
+    getchar();
+
+    int main_menu;
+
+    for(int i = 0; i < how_many; i++)
+    {
+        printf("\n\t\t\t\t....................Current enrolled students ...............\n\n");
+        printf("First name     : %s\n", students[i].fname);
+        printf("Last name      : %s\n", students[i].lname);
+        printf("Student number : %d\n", students[i].s_num);
+
+        sleep(2);
+
+        printf("\n");
+    }
+
+    printf("\n\nPress\n 1 : main menu\n 0 : exit");
+    scanf("%d",&main_menu);
+    if (main_menu == 1)
+    {
+        main();
+    }    
+    else
+    {
+        exit(0);
+    }
+
+}
 
 
 
 
 
+
+         
 
 
 
