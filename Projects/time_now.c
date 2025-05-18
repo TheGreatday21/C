@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
 
@@ -13,6 +14,7 @@ int main (void)
         printf("%02d : %02d : %02d \n",current_time->tm_hour,current_time->tm_min,current_time->tm_sec);
 
         sleep(1);
+        system("clear");
     }
    
 

@@ -5,12 +5,12 @@
 int main (void)
 {
     char strings [][15] = {"battleship","boot","canon","iron","thimble","top hat"};
-    char string [15] ;
+    char  string[15]  ;
     
     printf("String : ");
-    fgets(string,25,stdin);
-    string[ strlen(string) - 1 ] = '\0';
-
+    fgets(string,sizeof(string),stdin);
+    string[ strcspn(string, "\n")] = '\0';
+        
     int n = sizeof(strings)/sizeof(strings[0]);
 
     for(int i = 0; i < n; i++)

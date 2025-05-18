@@ -9,12 +9,16 @@ Write a program to build a simple Software for Student Information Management Sy
     Store the course registered by the student.
 */
 
+#define FILENAME "students.dat"//creating a file to store the students data even after exit 
 #include <stdio.h>
 #include <stdlib.h>//allows us to use the exit code status like exit(0) like return 0 for success 
 #include <string.h>
 #include <unistd.h>
 
+
 int how_many = 0;//variable to hold the number of students. First initialise it to 0
+
+
 
 struct SIMS
 {
@@ -32,9 +36,12 @@ void find_student_fname();
 void update_student();
 void delete_student();
 void total_students();
+void save_students_to_file();
+void load_students_from_file();
 
 int main(void)//placed main in an infinite loop so that the global variable how_many does not reset 
 {
+    load_students_from_file(); //program starts by loading the already kept data in the system 
     int input ;
     while(1)
     {
@@ -70,7 +77,9 @@ int main(void)//placed main in an infinite loop so that the global variable how_
             total_students();
             break;
         case 7:
-            exit(0);
+            save_students_to_file(); exit(0);//calling the save file function at the end of the program before exiting 
+        default:
+            printf("invalid option \n\n");
         
         }
     }
@@ -102,6 +111,8 @@ void courses(int cid)
 void add_student()
 {
     getchar();
+    int temp_s_num;
+    int duplicate_s_num;
 
     printf("\t\t\t\t\t\t\n..................Enter the student details here ................\n");
 
@@ -113,10 +124,28 @@ void add_student()
     fgets(students[how_many].lname, sizeof(students[how_many].lname), stdin);
     students[how_many].lname[strcspn(students[how_many].lname, "\n")] = '\0';
 
-   
-    printf("Student number : ");
-    scanf("%d", &students[how_many].s_num);
+   do
+   {
+    duplicate_s_num = 0;//You have to reassign duplicate to 0 every time the loop repeats 
+    printf("Student number : ");//We first get the student number and then iterate through the array to see if it exist 
+    scanf("%d", &temp_s_num);
     getchar();
+
+    for(int i = 0 ; i < how_many; i++)//iterate through the array
+    {
+        if(students[i].s_num == temp_s_num)
+        {
+            printf("\t.......The student number you have entered is already in use . Please use another ........\n");
+            duplicate_s_num = 1;
+            break;//To prevent it from going forever we break out and the do repeats 
+        }
+        
+    }
+   }while (duplicate_s_num);//the loop will continue if duplicate is true 
+   
+   
+
+   students[how_many].s_num = temp_s_num;
    
 
     printf("Current CGPA: ");
@@ -127,6 +156,8 @@ void add_student()
     scanf("%d", & students[how_many].cid);
 
     how_many += 1;
+    save_students_to_file();
+
 
     printf("\n\n\t\t\tStudent added successfully!\n\n\n");
 
@@ -183,7 +214,8 @@ void find_student_fname()
     getchar();
 
     char user_input[30];
-    int found,main_menu;
+    int found = 0;
+    int main_menu;
 
     printf("Enter the firstname here: ");
     fgets(user_input,sizeof(students[how_many].fname),stdin);
@@ -270,7 +302,9 @@ void update_student()
             printf("\n\t\t\t\t.....................Details updated successfully.................... \n");
             
         }
+        
     }
+    save_students_to_file();
 
     printf("\n\nPress\n 1 : main menu\n 0 : exit");
     scanf("%d",&main_menu);
@@ -301,11 +335,12 @@ void delete_student()
         if(students[i].s_num == user_input)
         {
             //we use a loop to delete the student by replacing them .Each student is raised 1 up to replace the number and tthe global variable is update with one less 
-            for(int j = i; j <= i; j++)
+            for (int j = i; j < how_many - 1; j++)
             {
                 students[j] = students[j + 1];
             }
             how_many --;
+            save_students_to_file();
         }
     }
 
@@ -355,7 +390,35 @@ void total_students()
     }
 
 }
+//creating a function to handle file saving 
+void save_students_to_file()
+{
+    FILE *fp = fopen(FILENAME, "wb");
+    if (fp == NULL)
+    {
+        perror("Failed to save data");
+        return;
+    }
 
+    fwrite(&how_many, sizeof(int), 1, fp); // Save count first
+    fwrite(students, sizeof(struct SIMS), how_many, fp); // Then the array
+    fclose(fp);
+}
+//creating a function to load the saved students 
+void load_students_from_file()
+{
+    FILE *fp = fopen(FILENAME, "rb");
+    if (fp == NULL)
+    {
+        // No file yet, probably first run
+        how_many = 0;
+        return;
+    }
+
+    fread(&how_many, sizeof(int), 1, fp);
+    fread(students, sizeof(struct SIMS), how_many, fp);
+    fclose(fp);
+}
 
 
 
