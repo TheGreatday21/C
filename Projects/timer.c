@@ -11,7 +11,7 @@ int main (void)
     while(1)//to keep it infinitely running until manually stopped 
     {
         fflush(stdout);//flushes the time 
-
+        sleep(1);
         system("clear");
         printf("%02d : %02d : %02d ",hour, minute ,second);//printing two digits on the screen for each measure of time 
 
@@ -33,7 +33,6 @@ int main (void)
             minute = 0;
             second = 0;
         }
-        sleep(1);
 
     }
     return 0;

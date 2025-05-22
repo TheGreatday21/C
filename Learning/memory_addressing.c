@@ -56,7 +56,7 @@ int main (void)
     for(int i =0,n = strlen(s); i<= n; i++)//we iterate till n because we also have to copy the last digit in the array 
     {
         t[i] = s[i];
-    }//thi process is made easier using a function called strcpy(destination, source)
+    }//thi process is made easier using a function called strcpy(destination, source) ie strcpy(t,s);
     //if the user just presses enter we also have to account for it by writing a statement that only when a strings length is greater than 0 can we capitalize it. Cause we cant capitalize 0
    if (strlen(s) > 0)
    {

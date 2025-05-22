@@ -153,7 +153,7 @@ void add_student()
     getchar(); // Clear newline
 
     printf("Enter your  course ID (1: BsDs, 2: BsCs, 3: BsIT, 4: DIT):\n");
-    scanf("%d", & students[how_many].cid);
+    scanf("%d", &students[how_many].cid);
 
     how_many += 1;
     save_students_to_file();
@@ -192,7 +192,7 @@ void find_student_num()
             
         }
     }
-    if (!found)//if not true (since found = 0 )
+    if (!found)//if not true 
     {
         printf("User student number invalid.\n");
     }
@@ -393,10 +393,10 @@ void total_students()
 //creating a function to handle file saving 
 void save_students_to_file()
 {
-    FILE *fp = fopen(FILENAME, "wb");
+    FILE *fp = fopen(FILENAME, "wb");//write binary
     if (fp == NULL)
     {
-        perror("Failed to save data");
+        printf("Failed to save data");
         return;
     }
 
@@ -407,7 +407,7 @@ void save_students_to_file()
 //creating a function to load the saved students 
 void load_students_from_file()
 {
-    FILE *fp = fopen(FILENAME, "rb");
+    FILE *fp = fopen(FILENAME, "rb");//read binary
     if (fp == NULL)
     {
         // No file yet, probably first run

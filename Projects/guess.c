@@ -36,6 +36,7 @@ Day 20-21: Game State and Scoring
 
 int score = 0;
 int comp_guess ;
+int games = 0;
 
 void guess();
 void game();
@@ -47,14 +48,14 @@ int main (void)
 	printf("..............In this game your are to guess the random number before your guesses run out...........\n");
 	printf(".........If you do so in the allocated chances given to you . You WIN if not YOU LOSE........\n");
 	
-	int games = 6;
+	int totalGames = 10;
 
-	for(int i = 1; i < games;i++)
+	for(int i = 1; i <= totalGames ;i++)
 	{
 		comp_guess = rand() % 21;
 		game();
 	}
-	printf("Your total score is : %d out of 5 games \n",score);
+	printf("Your total score is : %d out of %d games \n",score,totalGames);
 
 	return 10;
 
@@ -79,6 +80,7 @@ void guess()
 		{
 			printf("YOU WIN...😂🥳\n\n");
 			score ++;
+			games ++;
 			break;
 		}
 		else if (user_guess < comp_guess)
@@ -93,6 +95,7 @@ void guess()
 		if(chances == 5)
 		{
 			printf("\n\n...........Out of chances...............\n\n");
+			games ++;
 			break;
 		}
 
@@ -113,7 +116,7 @@ void game()
 		}
 		else if(play == 'q')
 		{
-			printf("Your total score is : %d out of 5 games. \n",score);
+			printf("Your total score is : %d out of %d games. \n",score,games);
 			exit(0);
 		}
 		else
