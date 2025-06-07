@@ -72,30 +72,32 @@ int lH = 0;//list header
 
 int main(void)
 {
-	
-	load_users();
-	load_lists();
-	//First thing when entering the program should be to load the users and lists in our files already
-
-	int start;
-
-	printf("\t\t\t....................APPLE NOTES PRIME........................\n\n");
-	printf("1. Create a new list .\n");
-	printf("2. Edit an  old list .\n");
-	printf("3. View your lists .\n");
-	switch (start)
+	while (true)
 	{
-	case 1:
-		add_list();
-		break;
-	case 2:
-		login_edit();
-		break;
-	case 3:
-		login_view();
-		break;	
-	default:
-		break;
+		load_users();
+		load_lists();
+		//First thing when entering the program should be to load the users and lists in our files already
+
+		int start;
+
+		printf("\t\t\t....................APPLE NOTES PRIME........................\n\n");
+		printf("1. Create a new list .\n");
+		printf("2. Edit an  old list .\n");
+		printf("3. View your lists .\n");
+		switch (start)
+		{
+		case 1:
+			add_list();
+			break;
+		case 2:
+			login_edit();
+			break;
+		case 3:
+			login_view();
+			break;	
+		default:
+			break;
+		}
 	}
 	
 }
